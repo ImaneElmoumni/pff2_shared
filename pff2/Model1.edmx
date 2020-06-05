@@ -1,0 +1,1720 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="projetffModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Absence">
+          <Key>
+            <PropertyRef Name="numAbsence" />
+          </Key>
+          <Property Name="numAbsence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormateurFK" Type="nvarchar" MaxLength="10" />
+          <Property Name="numModuleFk" Type="int" />
+          <Property Name="codeFFk1" Type="nvarchar" MaxLength="10" />
+          <Property Name="codeGroupe" Type="int" />
+          <Property Name="codeEFPFK" Type="nvarchar" MaxLength="10" />
+          <Property Name="codeFFk2" Type="nvarchar" MaxLength="10" />
+          <Property Name="annee" Type="nvarchar" MaxLength="9" />
+          <Property Name="niveau" Type="int" />
+          <Property Name="Semestre" Type="int" />
+          <Property Name="DateS" Type="date" />
+          <Property Name="heureDepart" Type="nvarchar" MaxLength="5" />
+          <Property Name="heureFin" Type="nvarchar" MaxLength="5" />
+          <Property Name="CEFFk" Type="nvarchar" MaxLength="13" />
+          <Property Name="typee" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="AffectationFMG">
+          <Key>
+            <PropertyRef Name="FormateurFK" />
+            <PropertyRef Name="numModuleFk" />
+            <PropertyRef Name="codeFFk1" />
+            <PropertyRef Name="codeGroupe" />
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk2" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+            <PropertyRef Name="semestre" />
+          </Key>
+          <Property Name="FormateurFK" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="numModuleFk" Type="int" Nullable="false" />
+          <Property Name="codeFFk1" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="codeGroupe" Type="int" Nullable="false" />
+          <Property Name="codeEFPFK" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="codeFFk2" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="annee" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="niveau" Type="int" Nullable="false" />
+          <Property Name="semestre" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="complexe">
+          <Key>
+            <PropertyRef Name="code_c" />
+          </Key>
+          <Property Name="code_c" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom_c" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="100" />
+          <Property Name="ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="code_postale" Type="nvarchar" MaxLength="5" />
+          <Property Name="codedrfk" Type="nvarchar" MaxLength="10" />
+          <Property Name="tel" Type="nvarchar" MaxLength="13" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="dr">
+          <Key>
+            <PropertyRef Name="code_dr" />
+          </Key>
+          <Property Name="code_dr" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom_dr" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="100" />
+          <Property Name="ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="code_postale" Type="nvarchar" MaxLength="5" />
+          <Property Name="region" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="13" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EFP">
+          <Key>
+            <PropertyRef Name="code_efp" />
+          </Key>
+          <Property Name="code_efp" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom_efp" Type="nvarchar" MaxLength="50" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="100" />
+          <Property Name="ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="code_postale" Type="nvarchar" MaxLength="5" />
+          <Property Name="codecfk" Type="nvarchar" MaxLength="10" />
+          <Property Name="tel" Type="nvarchar" MaxLength="13" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FEFP">
+          <Key>
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+          </Key>
+          <Property Name="codeEFPFK" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="codeFFk" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="annee" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="niveau" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filier">
+          <Key>
+            <PropertyRef Name="code_f" />
+          </Key>
+          <Property Name="code_f" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom_f" Type="nvarchar" MaxLength="50" />
+          <Property Name="niveau_f" Type="nvarchar" MaxLength="2" />
+          <Property Name="descriptionn" Type="nvarchar" MaxLength="255" />
+          <Property Name="codesfk" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="formateur">
+          <Key>
+            <PropertyRef Name="mlle" />
+          </Key>
+          <Property Name="mlle" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateNaissance" Type="date" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="codePostal" Type="nvarchar" MaxLength="5" />
+          <Property Name="region" Type="nvarchar" MaxLength="50" />
+          <Property Name="GSM" Type="nvarchar" MaxLength="13" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="codeSFk" Type="nvarchar" MaxLength="10" />
+          <Property Name="filierprincipal" Type="nvarchar" MaxLength="10" />
+          <Property Name="EFPPrincipale" Type="nvarchar" MaxLength="10" />
+          <Property Name="categorie" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="groupe">
+          <Key>
+            <PropertyRef Name="codeGroupe" />
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+          </Key>
+          <Property Name="codeGroupe" Type="int" Nullable="false" />
+          <Property Name="codeEFPFK" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="codeFFk" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="annee" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="niveau" Type="int" Nullable="false" />
+          <Property Name="capaciteMax" Type="int" />
+          <Property Name="countt" Type="int" />
+          <Property Name="Responsable1" Type="nvarchar" MaxLength="13" />
+          <Property Name="Responsable2" Type="nvarchar" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="numeroM" />
+            <PropertyRef Name="codeffk" />
+          </Key>
+          <Property Name="numeroM" Type="int" Nullable="false" />
+          <Property Name="codeffk" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom_m" Type="nvarchar" MaxLength="75" />
+          <Property Name="descriptionn" Type="nvarchar" MaxLength="255" />
+          <Property Name="chs1" Type="int" />
+          <Property Name="coefs1" Type="float" />
+          <Property Name="chs2" Type="int" />
+          <Property Name="coefs2" Type="float" />
+          <Property Name="chs3" Type="int" />
+          <Property Name="coefs3" Type="float" />
+          <Property Name="chs4" Type="int" />
+          <Property Name="coefs4" Type="float" />
+          <Property Name="chs5" Type="int" />
+          <Property Name="coefs5" Type="float" />
+          <Property Name="chs6" Type="int" />
+          <Property Name="coefs6" Type="float" />
+          <Property Name="type_m" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="ObjectifSeance">
+          <Key>
+            <PropertyRef Name="numObjectif" />
+          </Key>
+          <Property Name="numObjectif" Type="int" Nullable="false" />
+          <Property Name="FormateurFK" Type="nvarchar" MaxLength="10" />
+          <Property Name="numModuleFk" Type="int" />
+          <Property Name="codeFFk1" Type="nvarchar" MaxLength="10" />
+          <Property Name="codeGroupe" Type="int" />
+          <Property Name="codeEFPFK" Type="nvarchar" MaxLength="10" />
+          <Property Name="codeFFk2" Type="nvarchar" MaxLength="10" />
+          <Property Name="annee" Type="nvarchar" MaxLength="9" />
+          <Property Name="niveau" Type="int" />
+          <Property Name="Semestre" Type="int" />
+          <Property Name="DateS" Type="date" />
+          <Property Name="heureDepart" Type="nvarchar" MaxLength="5" />
+          <Property Name="heureFin" Type="nvarchar" MaxLength="5" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="typee" Type="nvarchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="seance">
+          <Key>
+            <PropertyRef Name="FormateurFK" />
+            <PropertyRef Name="numModuleFk" />
+            <PropertyRef Name="codeFFk1" />
+            <PropertyRef Name="codeGroupe" />
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk2" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+            <PropertyRef Name="semestre" />
+            <PropertyRef Name="dateS" />
+            <PropertyRef Name="heurDepart" />
+            <PropertyRef Name="heureFin" />
+          </Key>
+          <Property Name="FormateurFK" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="numModuleFk" Type="int" Nullable="false" />
+          <Property Name="codeFFk1" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="codeGroupe" Type="int" Nullable="false" />
+          <Property Name="codeEFPFK" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="codeFFk2" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="annee" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="niveau" Type="int" Nullable="false" />
+          <Property Name="semestre" Type="int" Nullable="false" />
+          <Property Name="dateS" Type="date" Nullable="false" />
+          <Property Name="heurDepart" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="heureFin" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Salle" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cumul" Type="float" />
+          <Property Name="Durée" Type="float" />
+        </EntityType>
+        <EntityType Name="secteur">
+          <Key>
+            <PropertyRef Name="code_s" />
+          </Key>
+          <Property Name="code_s" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nom_s" Type="nvarchar" MaxLength="50" />
+          <Property Name="nomCDC" Type="nvarchar" MaxLength="50" />
+          <Property Name="descriptionn" Type="nvarchar" MaxLength="255" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="100" />
+          <Property Name="ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="code_postale" Type="nvarchar" MaxLength="5" />
+          <Property Name="region" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="13" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="stagaire">
+          <Key>
+            <PropertyRef Name="cee" />
+          </Key>
+          <Property Name="cee" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="cin" Type="nvarchar" MaxLength="10" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateNaissance" Type="date" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" />
+          <Property Name="codePostal" Type="nvarchar" MaxLength="5" />
+          <Property Name="region" Type="nvarchar" MaxLength="50" />
+          <Property Name="GSM" Type="nvarchar" MaxLength="13" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="nomCompletTuteur" Type="nvarchar" MaxLength="100" />
+          <Property Name="lienParente" Type="nvarchar" MaxLength="2" />
+          <Property Name="GSMTuteur" Type="nvarchar" MaxLength="13" />
+          <Property Name="codegroupe" Type="int" />
+          <Property Name="codeeFPFK" Type="nvarchar" MaxLength="10" />
+          <Property Name="codefFk" Type="nvarchar" MaxLength="10" />
+          <Property Name="annee" Type="nvarchar" MaxLength="9" />
+          <Property Name="niveau" Type="int" />
+        </EntityType>
+        <Association Name="FK__Absence__CEFFk__440B1D61">
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Absence" Type="Self.Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stagaire">
+              <PropertyRef Name="cee" />
+            </Principal>
+            <Dependent Role="Absence">
+              <PropertyRef Name="CEFFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Affectati__Forma__36B12243">
+          <End Role="formateur" Type="Self.formateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formateur">
+              <PropertyRef Name="mlle" />
+            </Principal>
+            <Dependent Role="AffectationFMG">
+              <PropertyRef Name="FormateurFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__complexe__codedr__1273C1CD">
+          <End Role="dr" Type="Self.dr" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="complexe" Type="Self.complexe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dr">
+              <PropertyRef Name="code_dr" />
+            </Principal>
+            <Dependent Role="complexe">
+              <PropertyRef Name="codedrfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EFP__codecfk__15502E78">
+          <End Role="complexe" Type="Self.complexe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EFP" Type="Self.EFP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="complexe">
+              <PropertyRef Name="code_c" />
+            </Principal>
+            <Dependent Role="EFP">
+              <PropertyRef Name="codecfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FEFP__codeEFPFK__21B6055D">
+          <End Role="EFP" Type="Self.EFP" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FEFP" Type="Self.FEFP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EFP">
+              <PropertyRef Name="code_efp" />
+            </Principal>
+            <Dependent Role="FEFP">
+              <PropertyRef Name="codeEFPFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FEFP__codeFFk__22AA2996">
+          <End Role="filier" Type="Self.filier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FEFP" Type="Self.FEFP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filier">
+              <PropertyRef Name="code_f" />
+            </Principal>
+            <Dependent Role="FEFP">
+              <PropertyRef Name="codeFFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__filier__codesfk__1B0907CE">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="filier" Type="Self.filier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="code_s" />
+            </Principal>
+            <Dependent Role="filier">
+              <PropertyRef Name="codesfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__formateur__codeS__30F848ED">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1" />
+          <End Role="formateur" Type="Self.formateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="code_s" />
+            </Principal>
+            <Dependent Role="formateur">
+              <PropertyRef Name="codeSFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__formateur__EFPPr__32E0915F">
+          <End Role="EFP" Type="Self.EFP" Multiplicity="0..1" />
+          <End Role="formateur" Type="Self.formateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EFP">
+              <PropertyRef Name="code_efp" />
+            </Principal>
+            <Dependent Role="formateur">
+              <PropertyRef Name="EFPPrincipale" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__formateur__filie__31EC6D26">
+          <End Role="filier" Type="Self.filier" Multiplicity="0..1" />
+          <End Role="formateur" Type="Self.formateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filier">
+              <PropertyRef Name="code_f" />
+            </Principal>
+            <Dependent Role="formateur">
+              <PropertyRef Name="filierprincipal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__module__codeffk__1DE57479">
+          <End Role="filier" Type="Self.filier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="module" Type="Self.module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filier">
+              <PropertyRef Name="code_f" />
+            </Principal>
+            <Dependent Role="module">
+              <PropertyRef Name="codeffk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk1">
+          <End Role="FEFP" Type="Self.FEFP" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="groupe" Type="Self.groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FEFP">
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Principal>
+            <Dependent Role="groupe">
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk2">
+          <End Role="groupe" Type="Self.groupe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groupe">
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Principal>
+            <Dependent Role="stagaire">
+              <PropertyRef Name="codegroupe" />
+              <PropertyRef Name="codeeFPFK" />
+              <PropertyRef Name="codefFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk3">
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="0..1" />
+          <End Role="groupe" Type="Self.groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stagaire">
+              <PropertyRef Name="cee" />
+            </Principal>
+            <Dependent Role="groupe">
+              <PropertyRef Name="Responsable1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk4">
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="0..1" />
+          <End Role="groupe" Type="Self.groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stagaire">
+              <PropertyRef Name="cee" />
+            </Principal>
+            <Dependent Role="groupe">
+              <PropertyRef Name="Responsable2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk5">
+          <End Role="groupe" Type="Self.groupe" Multiplicity="1" />
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groupe">
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Principal>
+            <Dependent Role="AffectationFMG">
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk6">
+          <End Role="module" Type="Self.module" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="numeroM" />
+              <PropertyRef Name="codeffk" />
+            </Principal>
+            <Dependent Role="AffectationFMG">
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk7">
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="seance" Type="Self.seance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AffectationFMG">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+            </Principal>
+            <Dependent Role="seance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk8">
+          <End Role="seance" Type="Self.seance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ObjectifSeance" Type="Self.ObjectifSeance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+              <PropertyRef Name="dateS" />
+              <PropertyRef Name="heurDepart" />
+              <PropertyRef Name="heureFin" />
+            </Principal>
+            <Dependent Role="ObjectifSeance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="Semestre" />
+              <PropertyRef Name="DateS" />
+              <PropertyRef Name="heureDepart" />
+              <PropertyRef Name="heureFin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk9">
+          <End Role="seance" Type="Self.seance" Multiplicity="0..1" />
+          <End Role="Absence" Type="Self.Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+              <PropertyRef Name="dateS" />
+              <PropertyRef Name="heurDepart" />
+              <PropertyRef Name="heureFin" />
+            </Principal>
+            <Dependent Role="Absence">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="Semestre" />
+              <PropertyRef Name="DateS" />
+              <PropertyRef Name="heureDepart" />
+              <PropertyRef Name="heureFin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projetffModelStoreContainer">
+          <EntitySet Name="Absence" EntityType="Self.Absence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AffectationFMG" EntityType="Self.AffectationFMG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="complexe" EntityType="Self.complexe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dr" EntityType="Self.dr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EFP" EntityType="Self.EFP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FEFP" EntityType="Self.FEFP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filier" EntityType="Self.filier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="formateur" EntityType="Self.formateur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groupe" EntityType="Self.groupe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="module" EntityType="Self.module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObjectifSeance" EntityType="Self.ObjectifSeance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="seance" EntityType="Self.seance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="secteur" EntityType="Self.secteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stagaire" EntityType="Self.stagaire" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Absence__CEFFk__440B1D61" Association="Self.FK__Absence__CEFFk__440B1D61">
+            <End Role="stagaire" EntitySet="stagaire" />
+            <End Role="Absence" EntitySet="Absence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Affectati__Forma__36B12243" Association="Self.FK__Affectati__Forma__36B12243">
+            <End Role="formateur" EntitySet="formateur" />
+            <End Role="AffectationFMG" EntitySet="AffectationFMG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__complexe__codedr__1273C1CD" Association="Self.FK__complexe__codedr__1273C1CD">
+            <End Role="dr" EntitySet="dr" />
+            <End Role="complexe" EntitySet="complexe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EFP__codecfk__15502E78" Association="Self.FK__EFP__codecfk__15502E78">
+            <End Role="complexe" EntitySet="complexe" />
+            <End Role="EFP" EntitySet="EFP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FEFP__codeEFPFK__21B6055D" Association="Self.FK__FEFP__codeEFPFK__21B6055D">
+            <End Role="EFP" EntitySet="EFP" />
+            <End Role="FEFP" EntitySet="FEFP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FEFP__codeFFk__22AA2996" Association="Self.FK__FEFP__codeFFk__22AA2996">
+            <End Role="filier" EntitySet="filier" />
+            <End Role="FEFP" EntitySet="FEFP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__filier__codesfk__1B0907CE" Association="Self.FK__filier__codesfk__1B0907CE">
+            <End Role="secteur" EntitySet="secteur" />
+            <End Role="filier" EntitySet="filier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__formateur__codeS__30F848ED" Association="Self.FK__formateur__codeS__30F848ED">
+            <End Role="secteur" EntitySet="secteur" />
+            <End Role="formateur" EntitySet="formateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__formateur__EFPPr__32E0915F" Association="Self.FK__formateur__EFPPr__32E0915F">
+            <End Role="EFP" EntitySet="EFP" />
+            <End Role="formateur" EntitySet="formateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__formateur__filie__31EC6D26" Association="Self.FK__formateur__filie__31EC6D26">
+            <End Role="filier" EntitySet="filier" />
+            <End Role="formateur" EntitySet="formateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK__module__codeffk__1DE57479" Association="Self.FK__module__codeffk__1DE57479">
+            <End Role="filier" EntitySet="filier" />
+            <End Role="module" EntitySet="module" />
+          </AssociationSet>
+          <AssociationSet Name="fk1" Association="Self.fk1">
+            <End Role="FEFP" EntitySet="FEFP" />
+            <End Role="groupe" EntitySet="groupe" />
+          </AssociationSet>
+          <AssociationSet Name="fk2" Association="Self.fk2">
+            <End Role="groupe" EntitySet="groupe" />
+            <End Role="stagaire" EntitySet="stagaire" />
+          </AssociationSet>
+          <AssociationSet Name="fk3" Association="Self.fk3">
+            <End Role="stagaire" EntitySet="stagaire" />
+            <End Role="groupe" EntitySet="groupe" />
+          </AssociationSet>
+          <AssociationSet Name="fk4" Association="Self.fk4">
+            <End Role="stagaire" EntitySet="stagaire" />
+            <End Role="groupe" EntitySet="groupe" />
+          </AssociationSet>
+          <AssociationSet Name="fk5" Association="Self.fk5">
+            <End Role="groupe" EntitySet="groupe" />
+            <End Role="AffectationFMG" EntitySet="AffectationFMG" />
+          </AssociationSet>
+          <AssociationSet Name="fk6" Association="Self.fk6">
+            <End Role="module" EntitySet="module" />
+            <End Role="AffectationFMG" EntitySet="AffectationFMG" />
+          </AssociationSet>
+          <AssociationSet Name="fk7" Association="Self.fk7">
+            <End Role="AffectationFMG" EntitySet="AffectationFMG" />
+            <End Role="seance" EntitySet="seance" />
+          </AssociationSet>
+          <AssociationSet Name="fk8" Association="Self.fk8">
+            <End Role="seance" EntitySet="seance" />
+            <End Role="ObjectifSeance" EntitySet="ObjectifSeance" />
+          </AssociationSet>
+          <AssociationSet Name="fk9" Association="Self.fk9">
+            <End Role="seance" EntitySet="seance" />
+            <End Role="Absence" EntitySet="Absence" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="projetffModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Absence">
+          <Key>
+            <PropertyRef Name="numAbsence" />
+          </Key>
+          <Property Name="numAbsence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormateurFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="numModuleFk" Type="Int32" />
+          <Property Name="codeFFk1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="codeGroupe" Type="Int32" />
+          <Property Name="codeEFPFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="codeFFk2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="annee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="niveau" Type="Int32" />
+          <Property Name="Semestre" Type="Int32" />
+          <Property Name="DateS" Type="DateTime" Precision="0" />
+          <Property Name="heureDepart" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="heureFin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CEFFk" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="typee" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="stagaire" Relationship="Self.FK__Absence__CEFFk__440B1D61" FromRole="Absence" ToRole="stagaire" />
+          <NavigationProperty Name="seance" Relationship="Self.fk9" FromRole="Absence" ToRole="seance" />
+        </EntityType>
+        <EntityType Name="AffectationFMG">
+          <Key>
+            <PropertyRef Name="FormateurFK" />
+            <PropertyRef Name="numModuleFk" />
+            <PropertyRef Name="codeFFk1" />
+            <PropertyRef Name="codeGroupe" />
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk2" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+            <PropertyRef Name="semestre" />
+          </Key>
+          <Property Name="FormateurFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="numModuleFk" Type="Int32" Nullable="false" />
+          <Property Name="codeFFk1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codeGroupe" Type="Int32" Nullable="false" />
+          <Property Name="codeEFPFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codeFFk2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="annee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="niveau" Type="Int32" Nullable="false" />
+          <Property Name="semestre" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="formateur" Relationship="Self.FK__Affectati__Forma__36B12243" FromRole="AffectationFMG" ToRole="formateur" />
+          <NavigationProperty Name="groupe" Relationship="Self.fk5" FromRole="AffectationFMG" ToRole="groupe" />
+          <NavigationProperty Name="module" Relationship="Self.fk6" FromRole="AffectationFMG" ToRole="module" />
+          <NavigationProperty Name="seances" Relationship="Self.fk7" FromRole="AffectationFMG" ToRole="seance" />
+        </EntityType>
+        <EntityType Name="complexe">
+          <Key>
+            <PropertyRef Name="code_c" />
+          </Key>
+          <Property Name="code_c" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_c" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="code_postale" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="codedrfk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dr" Relationship="Self.FK__complexe__codedr__1273C1CD" FromRole="complexe" ToRole="dr" />
+          <NavigationProperty Name="EFPs" Relationship="Self.FK__EFP__codecfk__15502E78" FromRole="complexe" ToRole="EFP" />
+        </EntityType>
+        <EntityType Name="dr">
+          <Key>
+            <PropertyRef Name="code_dr" />
+          </Key>
+          <Property Name="code_dr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_dr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="code_postale" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="complexes" Relationship="Self.FK__complexe__codedr__1273C1CD" FromRole="dr" ToRole="complexe" />
+        </EntityType>
+        <EntityType Name="EFP">
+          <Key>
+            <PropertyRef Name="code_efp" />
+          </Key>
+          <Property Name="code_efp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_efp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="code_postale" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="codecfk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="complexe" Relationship="Self.FK__EFP__codecfk__15502E78" FromRole="EFP" ToRole="complexe" />
+          <NavigationProperty Name="FEFPs" Relationship="Self.FK__FEFP__codeEFPFK__21B6055D" FromRole="EFP" ToRole="FEFP" />
+          <NavigationProperty Name="formateurs" Relationship="Self.FK__formateur__EFPPr__32E0915F" FromRole="EFP" ToRole="formateur" />
+        </EntityType>
+        <EntityType Name="FEFP">
+          <Key>
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+          </Key>
+          <Property Name="codeEFPFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codeFFk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="annee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="niveau" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EFP" Relationship="Self.FK__FEFP__codeEFPFK__21B6055D" FromRole="FEFP" ToRole="EFP" />
+          <NavigationProperty Name="filier" Relationship="Self.FK__FEFP__codeFFk__22AA2996" FromRole="FEFP" ToRole="filier" />
+          <NavigationProperty Name="groupes" Relationship="Self.fk1" FromRole="FEFP" ToRole="groupe" />
+        </EntityType>
+        <EntityType Name="filier">
+          <Key>
+            <PropertyRef Name="code_f" />
+          </Key>
+          <Property Name="code_f" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_f" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="niveau_f" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="descriptionn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="codesfk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FEFPs" Relationship="Self.FK__FEFP__codeFFk__22AA2996" FromRole="filier" ToRole="FEFP" />
+          <NavigationProperty Name="secteur" Relationship="Self.FK__filier__codesfk__1B0907CE" FromRole="filier" ToRole="secteur" />
+          <NavigationProperty Name="formateurs" Relationship="Self.FK__formateur__filie__31EC6D26" FromRole="filier" ToRole="formateur" />
+          <NavigationProperty Name="modules" Relationship="Self.FK__module__codeffk__1DE57479" FromRole="filier" ToRole="module" />
+        </EntityType>
+        <EntityType Name="formateur">
+          <Key>
+            <PropertyRef Name="mlle" />
+          </Key>
+          <Property Name="mlle" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateNaissance" Type="DateTime" Precision="0" />
+          <Property Name="Adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codePostal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GSM" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="codeSFk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="filierprincipal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EFPPrincipale" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="categorie" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AffectationFMGs" Relationship="Self.FK__Affectati__Forma__36B12243" FromRole="formateur" ToRole="AffectationFMG" />
+          <NavigationProperty Name="EFP" Relationship="Self.FK__formateur__EFPPr__32E0915F" FromRole="formateur" ToRole="EFP" />
+          <NavigationProperty Name="filier" Relationship="Self.FK__formateur__filie__31EC6D26" FromRole="formateur" ToRole="filier" />
+          <NavigationProperty Name="secteur" Relationship="Self.FK__formateur__codeS__30F848ED" FromRole="formateur" ToRole="secteur" />
+        </EntityType>
+        <EntityType Name="groupe">
+          <Key>
+            <PropertyRef Name="codeGroupe" />
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+          </Key>
+          <Property Name="codeGroupe" Type="Int32" Nullable="false" />
+          <Property Name="codeEFPFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codeFFk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="annee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="niveau" Type="Int32" Nullable="false" />
+          <Property Name="capaciteMax" Type="Int32" />
+          <Property Name="countt" Type="Int32" />
+          <Property Name="Responsable1" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Responsable2" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AffectationFMGs" Relationship="Self.fk5" FromRole="groupe" ToRole="AffectationFMG" />
+          <NavigationProperty Name="FEFP" Relationship="Self.fk1" FromRole="groupe" ToRole="FEFP" />
+          <NavigationProperty Name="stagaires" Relationship="Self.fk2" FromRole="groupe" ToRole="stagaire" />
+          <NavigationProperty Name="stagaire" Relationship="Self.fk3" FromRole="groupe" ToRole="stagaire" />
+          <NavigationProperty Name="stagaire1" Relationship="Self.fk4" FromRole="groupe" ToRole="stagaire" />
+        </EntityType>
+        <EntityType Name="module">
+          <Key>
+            <PropertyRef Name="numeroM" />
+            <PropertyRef Name="codeffk" />
+          </Key>
+          <Property Name="numeroM" Type="Int32" Nullable="false" />
+          <Property Name="codeffk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_m" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="descriptionn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="chs1" Type="Int32" />
+          <Property Name="coefs1" Type="Double" />
+          <Property Name="chs2" Type="Int32" />
+          <Property Name="coefs2" Type="Double" />
+          <Property Name="chs3" Type="Int32" />
+          <Property Name="coefs3" Type="Double" />
+          <Property Name="chs4" Type="Int32" />
+          <Property Name="coefs4" Type="Double" />
+          <Property Name="chs5" Type="Int32" />
+          <Property Name="coefs5" Type="Double" />
+          <Property Name="chs6" Type="Int32" />
+          <Property Name="coefs6" Type="Double" />
+          <Property Name="type_m" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AffectationFMGs" Relationship="Self.fk6" FromRole="module" ToRole="AffectationFMG" />
+          <NavigationProperty Name="filier" Relationship="Self.FK__module__codeffk__1DE57479" FromRole="module" ToRole="filier" />
+        </EntityType>
+        <EntityType Name="ObjectifSeance">
+          <Key>
+            <PropertyRef Name="numObjectif" />
+          </Key>
+          <Property Name="numObjectif" Type="Int32" Nullable="false" />
+          <Property Name="FormateurFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="numModuleFk" Type="Int32" />
+          <Property Name="codeFFk1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="codeGroupe" Type="Int32" />
+          <Property Name="codeEFPFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="codeFFk2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="annee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="niveau" Type="Int32" />
+          <Property Name="Semestre" Type="Int32" />
+          <Property Name="DateS" Type="DateTime" Precision="0" />
+          <Property Name="heureDepart" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="heureFin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="typee" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="seance" Relationship="Self.fk8" FromRole="ObjectifSeance" ToRole="seance" />
+        </EntityType>
+        <EntityType Name="seance">
+          <Key>
+            <PropertyRef Name="FormateurFK" />
+            <PropertyRef Name="numModuleFk" />
+            <PropertyRef Name="codeFFk1" />
+            <PropertyRef Name="codeGroupe" />
+            <PropertyRef Name="codeEFPFK" />
+            <PropertyRef Name="codeFFk2" />
+            <PropertyRef Name="annee" />
+            <PropertyRef Name="niveau" />
+            <PropertyRef Name="semestre" />
+            <PropertyRef Name="dateS" />
+            <PropertyRef Name="heurDepart" />
+            <PropertyRef Name="heureFin" />
+          </Key>
+          <Property Name="FormateurFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="numModuleFk" Type="Int32" Nullable="false" />
+          <Property Name="codeFFk1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codeGroupe" Type="Int32" Nullable="false" />
+          <Property Name="codeEFPFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="codeFFk2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="annee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="niveau" Type="Int32" Nullable="false" />
+          <Property Name="semestre" Type="Int32" Nullable="false" />
+          <Property Name="dateS" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="heurDepart" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="heureFin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salle" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Cumul" Type="Double" />
+          <Property Name="Durée" Type="Double" />
+          <NavigationProperty Name="Absences" Relationship="Self.fk9" FromRole="seance" ToRole="Absence" />
+          <NavigationProperty Name="AffectationFMG" Relationship="Self.fk7" FromRole="seance" ToRole="AffectationFMG" />
+          <NavigationProperty Name="ObjectifSeances" Relationship="Self.fk8" FromRole="seance" ToRole="ObjectifSeance" />
+        </EntityType>
+        <EntityType Name="secteur">
+          <Key>
+            <PropertyRef Name="code_s" />
+          </Key>
+          <Property Name="code_s" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nom_s" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nomCDC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descriptionn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="code_postale" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="filiers" Relationship="Self.FK__filier__codesfk__1B0907CE" FromRole="secteur" ToRole="filier" />
+          <NavigationProperty Name="formateurs" Relationship="Self.FK__formateur__codeS__30F848ED" FromRole="secteur" ToRole="formateur" />
+        </EntityType>
+        <EntityType Name="stagaire">
+          <Key>
+            <PropertyRef Name="cee" />
+          </Key>
+          <Property Name="cee" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cin" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateNaissance" Type="DateTime" Precision="0" />
+          <Property Name="Adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codePostal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GSM" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="nomCompletTuteur" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="lienParente" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="GSMTuteur" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="codegroupe" Type="Int32" />
+          <Property Name="codeeFPFK" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="codefFk" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="annee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="niveau" Type="Int32" />
+          <NavigationProperty Name="Absences" Relationship="Self.FK__Absence__CEFFk__440B1D61" FromRole="stagaire" ToRole="Absence" />
+          <NavigationProperty Name="groupe" Relationship="Self.fk2" FromRole="stagaire" ToRole="groupe" />
+          <NavigationProperty Name="groupes" Relationship="Self.fk3" FromRole="stagaire" ToRole="groupe" />
+          <NavigationProperty Name="groupes1" Relationship="Self.fk4" FromRole="stagaire" ToRole="groupe" />
+        </EntityType>
+        <Association Name="FK__Absence__CEFFk__440B1D61">
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Absence" Type="Self.Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stagaire">
+              <PropertyRef Name="cee" />
+            </Principal>
+            <Dependent Role="Absence">
+              <PropertyRef Name="CEFFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk9">
+          <End Role="seance" Type="Self.seance" Multiplicity="0..1" />
+          <End Role="Absence" Type="Self.Absence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+              <PropertyRef Name="dateS" />
+              <PropertyRef Name="heurDepart" />
+              <PropertyRef Name="heureFin" />
+            </Principal>
+            <Dependent Role="Absence">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="Semestre" />
+              <PropertyRef Name="DateS" />
+              <PropertyRef Name="heureDepart" />
+              <PropertyRef Name="heureFin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Affectati__Forma__36B12243">
+          <End Role="formateur" Type="Self.formateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formateur">
+              <PropertyRef Name="mlle" />
+            </Principal>
+            <Dependent Role="AffectationFMG">
+              <PropertyRef Name="FormateurFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk5">
+          <End Role="groupe" Type="Self.groupe" Multiplicity="1" />
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groupe">
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Principal>
+            <Dependent Role="AffectationFMG">
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk6">
+          <End Role="module" Type="Self.module" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="module">
+              <PropertyRef Name="numeroM" />
+              <PropertyRef Name="codeffk" />
+            </Principal>
+            <Dependent Role="AffectationFMG">
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk7">
+          <End Role="AffectationFMG" Type="Self.AffectationFMG" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="seance" Type="Self.seance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AffectationFMG">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+            </Principal>
+            <Dependent Role="seance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__complexe__codedr__1273C1CD">
+          <End Role="dr" Type="Self.dr" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="complexe" Type="Self.complexe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dr">
+              <PropertyRef Name="code_dr" />
+            </Principal>
+            <Dependent Role="complexe">
+              <PropertyRef Name="codedrfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EFP__codecfk__15502E78">
+          <End Role="complexe" Type="Self.complexe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EFP" Type="Self.EFP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="complexe">
+              <PropertyRef Name="code_c" />
+            </Principal>
+            <Dependent Role="EFP">
+              <PropertyRef Name="codecfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FEFP__codeEFPFK__21B6055D">
+          <End Role="EFP" Type="Self.EFP" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FEFP" Type="Self.FEFP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EFP">
+              <PropertyRef Name="code_efp" />
+            </Principal>
+            <Dependent Role="FEFP">
+              <PropertyRef Name="codeEFPFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__formateur__EFPPr__32E0915F">
+          <End Role="EFP" Type="Self.EFP" Multiplicity="0..1" />
+          <End Role="formateur" Type="Self.formateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EFP">
+              <PropertyRef Name="code_efp" />
+            </Principal>
+            <Dependent Role="formateur">
+              <PropertyRef Name="EFPPrincipale" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FEFP__codeFFk__22AA2996">
+          <End Role="filier" Type="Self.filier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FEFP" Type="Self.FEFP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filier">
+              <PropertyRef Name="code_f" />
+            </Principal>
+            <Dependent Role="FEFP">
+              <PropertyRef Name="codeFFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk1">
+          <End Role="FEFP" Type="Self.FEFP" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="groupe" Type="Self.groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FEFP">
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Principal>
+            <Dependent Role="groupe">
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__filier__codesfk__1B0907CE">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="filier" Type="Self.filier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="code_s" />
+            </Principal>
+            <Dependent Role="filier">
+              <PropertyRef Name="codesfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__formateur__filie__31EC6D26">
+          <End Role="filier" Type="Self.filier" Multiplicity="0..1" />
+          <End Role="formateur" Type="Self.formateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filier">
+              <PropertyRef Name="code_f" />
+            </Principal>
+            <Dependent Role="formateur">
+              <PropertyRef Name="filierprincipal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__module__codeffk__1DE57479">
+          <End Role="filier" Type="Self.filier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="module" Type="Self.module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filier">
+              <PropertyRef Name="code_f" />
+            </Principal>
+            <Dependent Role="module">
+              <PropertyRef Name="codeffk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__formateur__codeS__30F848ED">
+          <End Role="secteur" Type="Self.secteur" Multiplicity="0..1" />
+          <End Role="formateur" Type="Self.formateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="secteur">
+              <PropertyRef Name="code_s" />
+            </Principal>
+            <Dependent Role="formateur">
+              <PropertyRef Name="codeSFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk2">
+          <End Role="groupe" Type="Self.groupe" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="groupe">
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Principal>
+            <Dependent Role="stagaire">
+              <PropertyRef Name="codegroupe" />
+              <PropertyRef Name="codeeFPFK" />
+              <PropertyRef Name="codefFk" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk3">
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="0..1" />
+          <End Role="groupe" Type="Self.groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stagaire">
+              <PropertyRef Name="cee" />
+            </Principal>
+            <Dependent Role="groupe">
+              <PropertyRef Name="Responsable1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk4">
+          <End Role="stagaire" Type="Self.stagaire" Multiplicity="0..1" />
+          <End Role="groupe" Type="Self.groupe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stagaire">
+              <PropertyRef Name="cee" />
+            </Principal>
+            <Dependent Role="groupe">
+              <PropertyRef Name="Responsable2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk8">
+          <End Role="seance" Type="Self.seance" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ObjectifSeance" Type="Self.ObjectifSeance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="seance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="semestre" />
+              <PropertyRef Name="dateS" />
+              <PropertyRef Name="heurDepart" />
+              <PropertyRef Name="heureFin" />
+            </Principal>
+            <Dependent Role="ObjectifSeance">
+              <PropertyRef Name="FormateurFK" />
+              <PropertyRef Name="numModuleFk" />
+              <PropertyRef Name="codeFFk1" />
+              <PropertyRef Name="codeGroupe" />
+              <PropertyRef Name="codeEFPFK" />
+              <PropertyRef Name="codeFFk2" />
+              <PropertyRef Name="annee" />
+              <PropertyRef Name="niveau" />
+              <PropertyRef Name="Semestre" />
+              <PropertyRef Name="DateS" />
+              <PropertyRef Name="heureDepart" />
+              <PropertyRef Name="heureFin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="projetffEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Absences" EntityType="Self.Absence" />
+          <EntitySet Name="AffectationFMGs" EntityType="Self.AffectationFMG" />
+          <EntitySet Name="complexes" EntityType="Self.complexe" />
+          <EntitySet Name="drs" EntityType="Self.dr" />
+          <EntitySet Name="EFPs" EntityType="Self.EFP" />
+          <EntitySet Name="FEFPs" EntityType="Self.FEFP" />
+          <EntitySet Name="filiers" EntityType="Self.filier" />
+          <EntitySet Name="formateurs" EntityType="Self.formateur" />
+          <EntitySet Name="groupes" EntityType="Self.groupe" />
+          <EntitySet Name="modules" EntityType="Self.module" />
+          <EntitySet Name="ObjectifSeances" EntityType="Self.ObjectifSeance" />
+          <EntitySet Name="seances" EntityType="Self.seance" />
+          <EntitySet Name="secteurs" EntityType="Self.secteur" />
+          <EntitySet Name="stagaires" EntityType="Self.stagaire" />
+          <AssociationSet Name="FK__Absence__CEFFk__440B1D61" Association="Self.FK__Absence__CEFFk__440B1D61">
+            <End Role="stagaire" EntitySet="stagaires" />
+            <End Role="Absence" EntitySet="Absences" />
+          </AssociationSet>
+          <AssociationSet Name="fk9" Association="Self.fk9">
+            <End Role="seance" EntitySet="seances" />
+            <End Role="Absence" EntitySet="Absences" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Affectati__Forma__36B12243" Association="Self.FK__Affectati__Forma__36B12243">
+            <End Role="formateur" EntitySet="formateurs" />
+            <End Role="AffectationFMG" EntitySet="AffectationFMGs" />
+          </AssociationSet>
+          <AssociationSet Name="fk5" Association="Self.fk5">
+            <End Role="groupe" EntitySet="groupes" />
+            <End Role="AffectationFMG" EntitySet="AffectationFMGs" />
+          </AssociationSet>
+          <AssociationSet Name="fk6" Association="Self.fk6">
+            <End Role="module" EntitySet="modules" />
+            <End Role="AffectationFMG" EntitySet="AffectationFMGs" />
+          </AssociationSet>
+          <AssociationSet Name="fk7" Association="Self.fk7">
+            <End Role="AffectationFMG" EntitySet="AffectationFMGs" />
+            <End Role="seance" EntitySet="seances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__complexe__codedr__1273C1CD" Association="Self.FK__complexe__codedr__1273C1CD">
+            <End Role="dr" EntitySet="drs" />
+            <End Role="complexe" EntitySet="complexes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EFP__codecfk__15502E78" Association="Self.FK__EFP__codecfk__15502E78">
+            <End Role="complexe" EntitySet="complexes" />
+            <End Role="EFP" EntitySet="EFPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FEFP__codeEFPFK__21B6055D" Association="Self.FK__FEFP__codeEFPFK__21B6055D">
+            <End Role="EFP" EntitySet="EFPs" />
+            <End Role="FEFP" EntitySet="FEFPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__formateur__EFPPr__32E0915F" Association="Self.FK__formateur__EFPPr__32E0915F">
+            <End Role="EFP" EntitySet="EFPs" />
+            <End Role="formateur" EntitySet="formateurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FEFP__codeFFk__22AA2996" Association="Self.FK__FEFP__codeFFk__22AA2996">
+            <End Role="filier" EntitySet="filiers" />
+            <End Role="FEFP" EntitySet="FEFPs" />
+          </AssociationSet>
+          <AssociationSet Name="fk1" Association="Self.fk1">
+            <End Role="FEFP" EntitySet="FEFPs" />
+            <End Role="groupe" EntitySet="groupes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__filier__codesfk__1B0907CE" Association="Self.FK__filier__codesfk__1B0907CE">
+            <End Role="secteur" EntitySet="secteurs" />
+            <End Role="filier" EntitySet="filiers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__formateur__filie__31EC6D26" Association="Self.FK__formateur__filie__31EC6D26">
+            <End Role="filier" EntitySet="filiers" />
+            <End Role="formateur" EntitySet="formateurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__module__codeffk__1DE57479" Association="Self.FK__module__codeffk__1DE57479">
+            <End Role="filier" EntitySet="filiers" />
+            <End Role="module" EntitySet="modules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__formateur__codeS__30F848ED" Association="Self.FK__formateur__codeS__30F848ED">
+            <End Role="secteur" EntitySet="secteurs" />
+            <End Role="formateur" EntitySet="formateurs" />
+          </AssociationSet>
+          <AssociationSet Name="fk2" Association="Self.fk2">
+            <End Role="groupe" EntitySet="groupes" />
+            <End Role="stagaire" EntitySet="stagaires" />
+          </AssociationSet>
+          <AssociationSet Name="fk3" Association="Self.fk3">
+            <End Role="stagaire" EntitySet="stagaires" />
+            <End Role="groupe" EntitySet="groupes" />
+          </AssociationSet>
+          <AssociationSet Name="fk4" Association="Self.fk4">
+            <End Role="stagaire" EntitySet="stagaires" />
+            <End Role="groupe" EntitySet="groupes" />
+          </AssociationSet>
+          <AssociationSet Name="fk8" Association="Self.fk8">
+            <End Role="seance" EntitySet="seances" />
+            <End Role="ObjectifSeance" EntitySet="ObjectifSeances" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="projetffModelStoreContainer" CdmEntityContainer="projetffEntities">
+          <EntitySetMapping Name="Absences">
+            <EntityTypeMapping TypeName="projetffModel.Absence">
+              <MappingFragment StoreEntitySet="Absence">
+                <ScalarProperty Name="numAbsence" ColumnName="numAbsence" />
+                <ScalarProperty Name="FormateurFK" ColumnName="FormateurFK" />
+                <ScalarProperty Name="numModuleFk" ColumnName="numModuleFk" />
+                <ScalarProperty Name="codeFFk1" ColumnName="codeFFk1" />
+                <ScalarProperty Name="codeGroupe" ColumnName="codeGroupe" />
+                <ScalarProperty Name="codeEFPFK" ColumnName="codeEFPFK" />
+                <ScalarProperty Name="codeFFk2" ColumnName="codeFFk2" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+                <ScalarProperty Name="Semestre" ColumnName="Semestre" />
+                <ScalarProperty Name="DateS" ColumnName="DateS" />
+                <ScalarProperty Name="heureDepart" ColumnName="heureDepart" />
+                <ScalarProperty Name="heureFin" ColumnName="heureFin" />
+                <ScalarProperty Name="CEFFk" ColumnName="CEFFk" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AffectationFMGs">
+            <EntityTypeMapping TypeName="projetffModel.AffectationFMG">
+              <MappingFragment StoreEntitySet="AffectationFMG">
+                <ScalarProperty Name="FormateurFK" ColumnName="FormateurFK" />
+                <ScalarProperty Name="numModuleFk" ColumnName="numModuleFk" />
+                <ScalarProperty Name="codeFFk1" ColumnName="codeFFk1" />
+                <ScalarProperty Name="codeGroupe" ColumnName="codeGroupe" />
+                <ScalarProperty Name="codeEFPFK" ColumnName="codeEFPFK" />
+                <ScalarProperty Name="codeFFk2" ColumnName="codeFFk2" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+                <ScalarProperty Name="semestre" ColumnName="semestre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="complexes">
+            <EntityTypeMapping TypeName="projetffModel.complexe">
+              <MappingFragment StoreEntitySet="complexe">
+                <ScalarProperty Name="code_c" ColumnName="code_c" />
+                <ScalarProperty Name="nom_c" ColumnName="nom_c" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="code_postale" ColumnName="code_postale" />
+                <ScalarProperty Name="codedrfk" ColumnName="codedrfk" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="drs">
+            <EntityTypeMapping TypeName="projetffModel.dr">
+              <MappingFragment StoreEntitySet="dr">
+                <ScalarProperty Name="code_dr" ColumnName="code_dr" />
+                <ScalarProperty Name="nom_dr" ColumnName="nom_dr" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="code_postale" ColumnName="code_postale" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EFPs">
+            <EntityTypeMapping TypeName="projetffModel.EFP">
+              <MappingFragment StoreEntitySet="EFP">
+                <ScalarProperty Name="code_efp" ColumnName="code_efp" />
+                <ScalarProperty Name="nom_efp" ColumnName="nom_efp" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="code_postale" ColumnName="code_postale" />
+                <ScalarProperty Name="codecfk" ColumnName="codecfk" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FEFPs">
+            <EntityTypeMapping TypeName="projetffModel.FEFP">
+              <MappingFragment StoreEntitySet="FEFP">
+                <ScalarProperty Name="codeEFPFK" ColumnName="codeEFPFK" />
+                <ScalarProperty Name="codeFFk" ColumnName="codeFFk" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filiers">
+            <EntityTypeMapping TypeName="projetffModel.filier">
+              <MappingFragment StoreEntitySet="filier">
+                <ScalarProperty Name="code_f" ColumnName="code_f" />
+                <ScalarProperty Name="nom_f" ColumnName="nom_f" />
+                <ScalarProperty Name="niveau_f" ColumnName="niveau_f" />
+                <ScalarProperty Name="descriptionn" ColumnName="descriptionn" />
+                <ScalarProperty Name="codesfk" ColumnName="codesfk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formateurs">
+            <EntityTypeMapping TypeName="projetffModel.formateur">
+              <MappingFragment StoreEntitySet="formateur">
+                <ScalarProperty Name="mlle" ColumnName="mlle" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="dateNaissance" ColumnName="dateNaissance" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="codePostal" ColumnName="codePostal" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="GSM" ColumnName="GSM" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="codeSFk" ColumnName="codeSFk" />
+                <ScalarProperty Name="filierprincipal" ColumnName="filierprincipal" />
+                <ScalarProperty Name="EFPPrincipale" ColumnName="EFPPrincipale" />
+                <ScalarProperty Name="categorie" ColumnName="categorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groupes">
+            <EntityTypeMapping TypeName="projetffModel.groupe">
+              <MappingFragment StoreEntitySet="groupe">
+                <ScalarProperty Name="codeGroupe" ColumnName="codeGroupe" />
+                <ScalarProperty Name="codeEFPFK" ColumnName="codeEFPFK" />
+                <ScalarProperty Name="codeFFk" ColumnName="codeFFk" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+                <ScalarProperty Name="capaciteMax" ColumnName="capaciteMax" />
+                <ScalarProperty Name="countt" ColumnName="countt" />
+                <ScalarProperty Name="Responsable1" ColumnName="Responsable1" />
+                <ScalarProperty Name="Responsable2" ColumnName="Responsable2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modules">
+            <EntityTypeMapping TypeName="projetffModel.module">
+              <MappingFragment StoreEntitySet="module">
+                <ScalarProperty Name="numeroM" ColumnName="numeroM" />
+                <ScalarProperty Name="codeffk" ColumnName="codeffk" />
+                <ScalarProperty Name="nom_m" ColumnName="nom_m" />
+                <ScalarProperty Name="descriptionn" ColumnName="descriptionn" />
+                <ScalarProperty Name="chs1" ColumnName="chs1" />
+                <ScalarProperty Name="coefs1" ColumnName="coefs1" />
+                <ScalarProperty Name="chs2" ColumnName="chs2" />
+                <ScalarProperty Name="coefs2" ColumnName="coefs2" />
+                <ScalarProperty Name="chs3" ColumnName="chs3" />
+                <ScalarProperty Name="coefs3" ColumnName="coefs3" />
+                <ScalarProperty Name="chs4" ColumnName="chs4" />
+                <ScalarProperty Name="coefs4" ColumnName="coefs4" />
+                <ScalarProperty Name="chs5" ColumnName="chs5" />
+                <ScalarProperty Name="coefs5" ColumnName="coefs5" />
+                <ScalarProperty Name="chs6" ColumnName="chs6" />
+                <ScalarProperty Name="coefs6" ColumnName="coefs6" />
+                <ScalarProperty Name="type_m" ColumnName="type_m" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObjectifSeances">
+            <EntityTypeMapping TypeName="projetffModel.ObjectifSeance">
+              <MappingFragment StoreEntitySet="ObjectifSeance">
+                <ScalarProperty Name="numObjectif" ColumnName="numObjectif" />
+                <ScalarProperty Name="FormateurFK" ColumnName="FormateurFK" />
+                <ScalarProperty Name="numModuleFk" ColumnName="numModuleFk" />
+                <ScalarProperty Name="codeFFk1" ColumnName="codeFFk1" />
+                <ScalarProperty Name="codeGroupe" ColumnName="codeGroupe" />
+                <ScalarProperty Name="codeEFPFK" ColumnName="codeEFPFK" />
+                <ScalarProperty Name="codeFFk2" ColumnName="codeFFk2" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+                <ScalarProperty Name="Semestre" ColumnName="Semestre" />
+                <ScalarProperty Name="DateS" ColumnName="DateS" />
+                <ScalarProperty Name="heureDepart" ColumnName="heureDepart" />
+                <ScalarProperty Name="heureFin" ColumnName="heureFin" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="typee" ColumnName="typee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="seances">
+            <EntityTypeMapping TypeName="projetffModel.seance">
+              <MappingFragment StoreEntitySet="seance">
+                <ScalarProperty Name="FormateurFK" ColumnName="FormateurFK" />
+                <ScalarProperty Name="numModuleFk" ColumnName="numModuleFk" />
+                <ScalarProperty Name="codeFFk1" ColumnName="codeFFk1" />
+                <ScalarProperty Name="codeGroupe" ColumnName="codeGroupe" />
+                <ScalarProperty Name="codeEFPFK" ColumnName="codeEFPFK" />
+                <ScalarProperty Name="codeFFk2" ColumnName="codeFFk2" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+                <ScalarProperty Name="semestre" ColumnName="semestre" />
+                <ScalarProperty Name="dateS" ColumnName="dateS" />
+                <ScalarProperty Name="heurDepart" ColumnName="heurDepart" />
+                <ScalarProperty Name="heureFin" ColumnName="heureFin" />
+                <ScalarProperty Name="Salle" ColumnName="Salle" />
+                <ScalarProperty Name="Cumul" ColumnName="Cumul" />
+                <ScalarProperty Name="Durée" ColumnName="Durée" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="secteurs">
+            <EntityTypeMapping TypeName="projetffModel.secteur">
+              <MappingFragment StoreEntitySet="secteur">
+                <ScalarProperty Name="code_s" ColumnName="code_s" />
+                <ScalarProperty Name="nom_s" ColumnName="nom_s" />
+                <ScalarProperty Name="nomCDC" ColumnName="nomCDC" />
+                <ScalarProperty Name="descriptionn" ColumnName="descriptionn" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="code_postale" ColumnName="code_postale" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stagaires">
+            <EntityTypeMapping TypeName="projetffModel.stagaire">
+              <MappingFragment StoreEntitySet="stagaire">
+                <ScalarProperty Name="cee" ColumnName="cee" />
+                <ScalarProperty Name="cin" ColumnName="cin" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="dateNaissance" ColumnName="dateNaissance" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="codePostal" ColumnName="codePostal" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="GSM" ColumnName="GSM" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="nomCompletTuteur" ColumnName="nomCompletTuteur" />
+                <ScalarProperty Name="lienParente" ColumnName="lienParente" />
+                <ScalarProperty Name="GSMTuteur" ColumnName="GSMTuteur" />
+                <ScalarProperty Name="codegroupe" ColumnName="codegroupe" />
+                <ScalarProperty Name="codeeFPFK" ColumnName="codeeFPFK" />
+                <ScalarProperty Name="codefFk" ColumnName="codefFk" />
+                <ScalarProperty Name="annee" ColumnName="annee" />
+                <ScalarProperty Name="niveau" ColumnName="niveau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

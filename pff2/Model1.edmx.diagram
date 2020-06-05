@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c280cebb89ec47a5a49b359aabe4a7f9" Name="Diagram1">
+        <EntityTypeShape EntityType="projetffModel.Absence" Width="1.5" PointX="20.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.AffectationFMG" Width="1.5" PointX="15.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.complexe" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.dr" Width="1.5" PointX="1.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.EFP" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.FEFP" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.filier" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.formateur" Width="1.5" PointX="8.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.groupe" Width="1.5" PointX="10.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.module" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.ObjectifSeance" Width="1.5" PointX="20.25" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.seance" Width="1.5" PointX="18" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.secteur" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="projetffModel.stagaire" Width="1.5" PointX="12.75" PointY="17.625" IsExpanded="true" />
+        <AssociationConnector Association="projetffModel.FK__Absence__CEFFk__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk9" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__Affectati__Forma__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk5" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk6" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk7" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__complexe__codedr__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__EFP__codecfk__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__FEFP__codeEFPFK__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__formateur__EFPPr__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__FEFP__codeFFk__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__filier__codesfk__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__formateur__filie__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__module__codeffk__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.FK__formateur__codeS__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk3" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk4" ManuallyRouted="false" />
+        <AssociationConnector Association="projetffModel.fk8" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
