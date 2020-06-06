@@ -201,7 +201,6 @@
   <ItemGroup>
     <Folder Include="abdo\" />
     <Folder Include="suka+ima\" />
-    <Folder Include="yusef\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model1.Context.tt">
@@ -217,6 +216,8 @@
     <Content Include="tsawer\58061a75aef31.jpg" />
     <Content Include="tsawer\jf.PNG" />
     <Content Include="tsawer\site bannerVF_2 %281%29.png" />
+    <Content Include="yusef\pff2.exe" />
+    <Content Include="yusef\pff2.sln" />
     <None Include="Resources\58061a75aef31.jpg" />
     <None Include="Resources\ee.PNG" />
     <None Include="Resources\site bannerVF_2.png" />
