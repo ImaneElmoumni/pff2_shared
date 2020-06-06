@@ -214,6 +214,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="tsawer\58061a75aef31.jpg" />
+    <Content Include="tsawer\jf.PNG" />
+    <Content Include="tsawer\site bannerVF_2 %281%29.png" />
     <None Include="Resources\58061a75aef31.jpg" />
     <None Include="Resources\ee.PNG" />
     <None Include="Resources\site bannerVF_2.png" />
