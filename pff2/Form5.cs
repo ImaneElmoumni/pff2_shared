@@ -10,50 +10,69 @@ using System.Windows.Forms;
 
 namespace pff2
 {
-    public partial class Form1 : Form
+    public partial class Form5 : Form
     {
-        public Form1()
+        public Form5()
         {
             InitializeComponent();
         }
-       
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void Form5_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void circleButton15_Click(object sender, EventArgs e)
+        private void textBox7_TextChanged(object sender, EventArgs e)
         {
-            int b = 0;
-            if (b == 0)
-            {
 
-
-                class11.Visible = true;
-                b = 1;
-            }
         }
 
         private void circleButton2_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
-            f2.Show();
+            Form2 f = new Form2();
+            f.Show();
             this.Hide();
-
         }
 
         private void circleButton3_Click(object sender, EventArgs e)
         {
+
             Form3 f3 = new Form3();
             f3.Show();
             this.Hide();
-
         }
 
         private void circleButton4_Click(object sender, EventArgs e)
         {
             Form4 f4 = new Form4();
             f4.Show();
+            this.Hide();
+        }
+
+        private void circleButton15_Click(object sender, EventArgs e)
+        {
+            class11.Visible = true;
+        }
+
+        private void circleButton4_Click_1(object sender, EventArgs e)
+        {
+
+            Form4 f4 = new Form4();
+            f4.Show();
+            this.Hide();
+        }
+
+        private void circleButton2_Click_1(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+            this.Hide();
+        }
+
+        private void circleButton3_Click_1(object sender, EventArgs e)
+        {
+            Form3 f3 = new Form3();
+            f3.Show();
             this.Hide();
         }
 

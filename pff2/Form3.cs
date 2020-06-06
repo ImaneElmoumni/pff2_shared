@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace pff2
 {
-    public partial class Form1 : Form
+    public partial class Form3 : Form
     {
-        public Form1()
+        public Form3()
         {
             InitializeComponent();
-        }
-       
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void circleButton15_Click(object sender, EventArgs e)
@@ -36,17 +31,13 @@ namespace pff2
 
         private void circleButton2_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
-            f2.Show();
+            Form2 f = new Form2();
+            f.Show();
             this.Hide();
-
         }
 
         private void circleButton3_Click(object sender, EventArgs e)
         {
-            Form3 f3 = new Form3();
-            f3.Show();
-            this.Hide();
 
         }
 
@@ -57,10 +48,31 @@ namespace pff2
             this.Hide();
         }
 
+        private void circleButton4_Click_1(object sender, EventArgs e)
+        {
+            Form4 f4 = new Form4();
+            f4.Show();
+            this.Hide();
+        }
+
         private void circleButton5_Click(object sender, EventArgs e)
         {
             Form5 f5 = new Form5();
             f5.Show();
+            this.Hide();
+        }
+
+        private void circleButton2_Click_1(object sender, EventArgs e)
+        {
+            Form2 f2 = new Form2();
+            f2.Show();
+            this.Hide();
+        }
+
+        private void circleButton3_Click_1(object sender, EventArgs e)
+        {
+            Form3 f3 = new Form3();
+            f3.Show();
             this.Hide();
         }
     }
